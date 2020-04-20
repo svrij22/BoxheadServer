@@ -1,6 +1,6 @@
 {
   "version": 106,
-  "ticks": 5904,
+  "ticks": 6439,
   "sockets": [
     {
       "remote": {},
@@ -108,11 +108,11 @@
   "playtimehr": 0,
   "memusage": {
     "totalMemMb": 15.96,
-    "usedMemMb": 10.83,
-    "freeMemMb": 5.13,
-    "freeMemPercentage": 32.16
+    "usedMemMb": 10.04,
+    "freeMemMb": 5.92,
+    "freeMemPercentage": 37.1
   },
-  "cpuusage": 15.17,
+  "cpuusage": 29.89,
   "gameMaps": [
     {},
     {},
