@@ -82,6 +82,17 @@ var heartbeatTicker = setInterval(function () {
 }, 2000);
 
 //Logging
+
+
+//playerData
+try{
+    playerData = fs.readFileSync('./public/playerData.json', 'utf-8')
+    playerData = JSON.parse(playerData);
+}catch(err){
+    console.log (err.message)
+    playerData = [];
+}
+
 //Load data from page ticker and dataMap
 try{
     dataItems = fs.readFileSync('./public/dataFile.json', 'utf-8')
@@ -148,22 +159,74 @@ function writeDataFile() {
     fs.writeFileSync('./dataMap.json', JSON.stringify(dataMap, null, 2), 'utf-8');
 } //20 000 later
 
+function writePlayerFile() {
+    fs.writeFileSync('./public/playerData.json', JSON.stringify(playerData, null, 2), 'utf-8')
+}
+
+//do every minute
+var fileSaveTicker = setInterval(function () {
+    writeDataFile();
+    writePlayerFile();
+}, 20000);
+
 //Setup server
 http.createServer(function (req, res, next) {
-    writeDataFile();
-    console.log("File get");
-    fs.readFile(__dirname + "/public"+ req.url, function (err,data) {
-      if (err) {
-        res.writeHead(404);
-        res.end(JSON.stringify(err));
-        return;
-      }
-      res.writeHead(200, {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
-      });
-      res.end(data);
-    });
+    try{
+
+        console.log (req.method)
+
+        //Cors
+        if (req.method === 'OPTIONS'){
+            let headers = {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, authkey"
+            }
+            res.writeHead(200, headers);
+            res.end();
+            return;
+        }
+
+        //Auth key gen
+        username = "svrij22";
+        password = "servertest";
+        let auth = "auth" + new Buffer(username + ":" + password).toString("base64");
+
+        //Update files
+        if ((req.url).includes("dataFile")) writeDataFile();
+        if ((req.url).includes("playerData")) writePlayerFile();
+
+        let authComplete = false;
+        let authGet = req.headers.authkey;
+
+        if (authGet !== undefined){
+            if (authGet.includes(auth)){
+                authComplete = true;
+            }
+        }
+
+        console.log(authGet)
+
+        if (authComplete){
+            fs.readFile(__dirname + "/public"+ req.url, function (err,data) {
+                if (err) {
+                    console.log("404")8
+                    res.writeHead(404, headers);
+                    res.end(JSON.stringify(err));
+                    return;
+                }
+                console.log("200")
+                res.writeHead(200);
+                res.end(data);
+            });
+        }else{
+            console.log("401")
+            res.writeHead(401);
+            res.end(auth);
+        }
+    }catch (e) {
+        console.log(e.message);
+    }
+
   }).listen(8090);
 
 //retrieve or get new identity
@@ -540,12 +603,33 @@ server.on('message', function (message, remote) {
 
             server.send(bufA, 0, bufA.length, remote.port, remote.address);
         }
+        if (messagetype == 12) {
+
+            //Get dict and merge
+            text = message.toString('ascii', 2);
+            text = text.replace(/.$/g, '')
+            dict = JSON.parse(text)
+
+            //find data
+            dataIndex = playerData.findIndex(value => {
+                return (value.clientid === dict.clientid);
+            })
+
+            //add or update data
+            if (dataIndex !== -1){
+                console.log("found")
+                playerData[dataIndex] = dict
+            }else{
+                console.log("not found")
+                playerData.push(dict);
+            }
+        }
 
     } catch (err) {
         console.log("\n\n ERROR", err.message, "\n\n")
         DATA_errors += 1
 
-        try {
+        try {8
             fd = fs.openSync("errors.log", 'a');
             fs.appendFileSync(fd, "ERROR\n" + err.stack + "\n\n");
         } catch (err) {

@@ -1,81 +1,91 @@
 {
   "version": 106,
-  "ticks": 29,
+  "ticks": 5904,
   "sockets": [
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     },
     {
+      "remote": {},
       "heartbeat": -1,
       "group": -1,
-      "remote": {},
+      "name": "",
       "ticks": 0,
-      "name": 0
+      "gameoverTicker": 0
     }
   ],
   "errors": 0,
   "logintries": 1,
-  "packets": 197,
+  "packets": 301,
   "players_online": 0,
   "players_max": 10,
   "packet_types": {
@@ -86,7 +96,8 @@
     "5": 51,
     "6": 9,
     "7": 3,
-    "9": 1
+    "9": 103,
+    "12": 2
   },
   "uniqueips": [
     "81.206.12.59"
@@ -97,9 +108,22 @@
   "playtimehr": 0,
   "memusage": {
     "totalMemMb": 15.96,
-    "usedMemMb": 10.84,
-    "freeMemMb": 5.12,
-    "freeMemPercentage": 32.09
+    "usedMemMb": 10.83,
+    "freeMemMb": 5.13,
+    "freeMemPercentage": 32.16
   },
-  "cpuusage": 15.86
+  "cpuusage": 15.17,
+  "gameMaps": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "netusage": "not supported"
 }
