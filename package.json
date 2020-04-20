@@ -1,0 +1,22 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "boxhead server",
+  "main": "server.js",
+  "dependencies": {
+    "light-server": "^2.6.4",
+    "node-os-utils": "^1.2.2",
+    "node-static": "^0.7.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "boxheadserver"
+  },
+  "author": "svrij22",
+  "license": "ISC"
+}

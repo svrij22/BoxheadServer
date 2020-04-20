@@ -1,0 +1,53 @@
+<body>
+    <div class="dataBox">
+        <div class="infoBox">Ticks: <a id="ticks"></a><br>
+        Connected: <a id="sockets"></a><br>
+        New errors: <a id="errors"></a></div>
+        <div class="infoBox"><p id="json"></p></div>
+    </div>
+</body>>
+
+<script>
+    dataFile = "asd"
+    fetch('./dataFile.json')
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            dataFile = data
+            setData()
+            console.log(data)
+        })
+    
+    function setData(){
+        document.getElementById("json").innerHTML = JSON.stringify(dataFile);
+        document.getElementById("ticks").innerHTML = dataFile['ticks'];
+        document.getElementById("errors").innerHTML = dataFile['errors'];
+
+        count = 0;
+        sockamt = dataFile['sockets'].forEach(element => {
+            if (element.heartbeat > 0) count++
+        });
+        document.getElementById("sockets").innerHTML = count + "/" + dataFile['sockets'].length;
+    }
+</script>
+
+<style>
+
+.dataBox{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+}
+
+.infoBox{
+    font-size: larger;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 3px;
+    border: 2px solid black;
+    height: auto;
+}
+</style>
