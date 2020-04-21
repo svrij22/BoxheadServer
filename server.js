@@ -16,7 +16,7 @@ var socketamt = 10;
 var sockets = new Array(socketamt);
 
 //Version
-var gameVersion = 106
+var gameVersion = 107
 
 for (i = 0; i < socketamt; i++) {
 	socket_reset(i)
@@ -53,12 +53,13 @@ var heartbeatTicker = setInterval(function () {
 	heartbeat_tick();
 	DATA_tick_amount += 1;
 	DATA_playtime += 2 * get_connected_socket_amt()
+	console.log (groupState)
 
 	//Group state
 	for (i = 0; i < groupSize; i++) {
 
 		//cleanup
-		if (groupState[i] == 2) {
+		if (groupState[i] === 2) {
 			groupState[i] = -1
 			dataMap[i] = {}
 		}
@@ -590,14 +591,12 @@ server.on('message', function (message, remote) {
 			console.log(gmIds)
 
 			var gameOver = (identities.length === gmIds.length)
-			console.log(gameOver)
 
 			if (gameOver) {
-
 				//Set gameover
 				dataMap[group].config.wavestate = "GAMEOVER";
 				dataMap[group].config.waveticker += 100;
-				groupState[i] = 1;
+				groupState[group] = 1;
 			}
 
 			bufA = new Buffer.alloc(4);
