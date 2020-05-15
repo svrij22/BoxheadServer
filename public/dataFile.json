@@ -1,6 +1,6 @@
 {
   "version": 107,
-  "ticks": 1865,
+  "ticks": 6613,
   "sockets": [
     {
       "remote": {},
@@ -84,28 +84,28 @@
     }
   ],
   "errors": 0,
-  "logintries": 49,
-  "packets": 9424,
+  "logintries": 69,
+  "packets": 14500,
   "players_online": 0,
   "players_max": 10,
   "packet_types": {
-    "0": 458,
-    "1": 4577,
-    "2": 49,
-    "3": 49,
-    "5": 2232,
-    "6": 441,
-    "7": 29,
-    "9": 1159,
-    "11": 127,
-    "12": 303
+    "0": 731,
+    "1": 7362,
+    "2": 69,
+    "3": 69,
+    "5": 3477,
+    "6": 707,
+    "7": 85,
+    "9": 1315,
+    "11": 250,
+    "12": 435
   },
   "uniqueips": [
     "81.206.12.59"
   ],
-  "playtime": 1172,
-  "playtimesec": 32,
-  "playtimemin": 19,
+  "playtime": 1814,
+  "playtimesec": 14,
+  "playtimemin": 30,
   "playtimehr": 0,
   "gameMaps": [
     {},
@@ -121,10 +121,10 @@
   ],
   "memusage": {
     "totalMemMb": 15.96,
-    "usedMemMb": 9.92,
-    "freeMemMb": 6.04,
-    "freeMemPercentage": 37.86
+    "usedMemMb": 10.87,
+    "freeMemMb": 5.09,
+    "freeMemPercentage": 31.91
   },
-  "cpuusage": 3.1,
+  "cpuusage": 8.96,
   "netusage": "not supported"
 }

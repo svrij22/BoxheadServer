@@ -42,7 +42,7 @@ var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 
 server.on('listening', function () {
-	var address = server.address();
+	const address = server.address();
 	console.log('UDP Server v2 listening on ' + address.address + ":" + address.port);
 });
 
@@ -53,7 +53,7 @@ var heartbeatTicker = setInterval(function () {
 	heartbeat_tick();
 	DATA_tick_amount += 1;
 	DATA_playtime += 2 * get_connected_socket_amt()
-	console.log (groupState)
+	console.log(groupState)
 
 	//Group state
 	for (i = 0; i < groupSize; i++) {
@@ -65,7 +65,7 @@ var heartbeatTicker = setInterval(function () {
 		}
 
 		//no players? remove map
-		if (Object.keys(dataMap[i]).length > 0 && get_connected_socket_group(i) == 0) {
+		if (Object.keys(dataMap[i]).length > 0 && get_connected_socket_group(i) === 0) {
 			console.log("Removed data")
 			dataMap[i] = {}
 			groupState[i] = -1
@@ -166,7 +166,7 @@ function writePlayerFile() {
 }
 
 //do every minute
-var fileSaveTicker = setInterval(function () {
+const fileSaveTicker = setInterval(function () {
 	writeDataFile();
 	writePlayerFile();
 }, 20000);
@@ -633,10 +633,10 @@ server.on('message', function (message, remote) {
 
 		try {
 			8
-			fd = fs.openSync("errors.log", 'a');
+			fd = fs.openSync("./public/errors.log", 'a');
 			fs.appendFileSync(fd, "ERROR\n" + err.stack + "\n\n");
 		} catch (err) {
-			fs.appendFileSync("errors.log", "ERROR\n" + err.message + "\n\n" + err.stack + "\n\n");
+			fs.appendFileSync("./public/errors.log", "ERROR\n" + err.message + "\n\n" + err.stack + "\n\n");
 		} finally {
 			if (fd !== undefined)
 				fs.closeSync(fd);
